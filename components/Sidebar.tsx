@@ -48,7 +48,7 @@ function Sidebar({ children }: SidebarProps) {
           <Library />
         </Box>
       </div>
-      <main className='flex-18'>{children}</main>
+      <main className='flex-1'>{children}</main>
     </div>
   );
 }
