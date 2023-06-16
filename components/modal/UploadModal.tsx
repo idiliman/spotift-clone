@@ -38,10 +38,11 @@ function UploadModal() {
   };
 
   const onSubmit: SubmitHandler<FieldValues> = async (values) => {
+    console.log('values', values);
     try {
       setIsLoading(true);
 
-      const imageFile = values.images?.[0];
+      const imageFile = values.image?.[0];
       const songFile = values.song?.[0];
 
       if (!imageFile || !songFile || !user) {
@@ -71,12 +72,13 @@ function UploadModal() {
         return toast.error('Failed to upload image.');
       }
 
+      // Create record
       const { error: supabaseError } = await supabaseClient.from('songs').insert({
         user_id: user.id,
         title: values.title,
         author: values.author,
         image_path: imageData.path,
-        song_path: songData.path,
+        songs_path: songData.path,
       });
 
       if (supabaseError) {
