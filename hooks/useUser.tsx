@@ -18,7 +18,7 @@ export interface Props {
   [propName: string]: any;
 }
 
-export default function MyUserContextProvider(props: Props) {
+export function MyUserContextProvider(props: Props) {
   const { session, isLoading: isLoadingUser, supabaseClient: supabase } = useSessionContext();
 
   const user = useSupaUser();
