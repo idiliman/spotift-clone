@@ -10,6 +10,8 @@ interface SearchProps {
   };
 }
 
+export const revalidate = 0;
+
 async function SearchPage({ searchParams }: SearchProps) {
   const songs = await getSongsByTitle(searchParams.title);
   console.log('🚀 ~ SearchPage ~ songs:', searchParams);
