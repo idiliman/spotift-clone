@@ -15,6 +15,7 @@ function MediaItem({ data, onClick }: MediaItemProps) {
 
   const handleClick = () => {
     if (onClick) {
+      console.log('🚀 ~ handleClick ~ onClick:', data.id);
       return onClick(data.id);
     }
 
