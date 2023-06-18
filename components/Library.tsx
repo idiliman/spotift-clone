@@ -15,7 +15,6 @@ interface LibraryProps {
 }
 
 function Library({ songs }: LibraryProps) {
-  console.log('🚀 ~ Library ~ songs:', songs);
   const authModal = useAuthModal();
   const uploadModal = useUploadModal();
   const { user } = useUser();

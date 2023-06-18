@@ -39,8 +39,8 @@ function MediaItem({ data, onClick }: MediaItemProps) {
         className='
           relative 
           rounded-md 
-          min-h-[48px] 
-          min-w-[48px] 
+          min-h-[3rem] 
+          min-w-[3rem] 
           overflow-hidden
         '
       >

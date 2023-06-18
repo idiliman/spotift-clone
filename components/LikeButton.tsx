@@ -29,17 +29,12 @@ function LikeButton({ songId }: LikeButtonProps) {
     }
 
     const fetchData = async () => {
-      console.log('Checking liked songs');
-
       const { data, error } = await supabaseClient
         .from('liked_songs')
         .select('*')
         .eq('user_id', user.id)
         .eq('song_id', songId)
         .single();
-
-      console.log('🚀 ~ fetchData ~ data:', data);
-      console.log('🚀 ~ fetchData ~ error:', error);
 
       if (!error && data) {
         setIsLiked(true);
