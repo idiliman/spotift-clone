@@ -3,11 +3,12 @@
 import Modal from './Modal';
 import Button from '@/components/Button';
 
+import { useState } from 'react';
+import { toast } from 'react-hot-toast';
+
 import { Price, ProductWithPrice } from '@/types';
 import useSubscribeModal from '@/hooks/useSubscribeModal';
 import { useUser } from '@/hooks/useUser';
-import { useState } from 'react';
-import { toast } from 'react-hot-toast';
 import { postData } from '@/libs/helpers';
 import getStripe from '@/libs/stripeClient';
 
@@ -58,6 +59,7 @@ function SubscribeModal({ products }: SubscribeModalProps) {
       });
 
       const stripe = await getStripe();
+
       stripe?.redirectToCheckout({ sessionId });
     } catch (error) {
       return toast.error((error as Error)?.message);
@@ -80,7 +82,6 @@ function SubscribeModal({ products }: SubscribeModalProps) {
             <Button
               key={price.id}
               onClick={() => handleCheckout(price)}
-              // disabled
               disabled={isLoading || price.id === priceIdLoading}
               className='mb-4'
             >
@@ -97,7 +98,12 @@ function SubscribeModal({ products }: SubscribeModalProps) {
   }
 
   return (
-    <Modal title='Only for premium users' description='Listen to music with Spotify Premium' isOpen onChange={onChange}>
+    <Modal
+      title='Only for premium users'
+      description='Listen to music with Spotify Premium'
+      isOpen={subscribeModal.isOpen}
+      onChange={onChange}
+    >
       {content}
     </Modal>
   );
